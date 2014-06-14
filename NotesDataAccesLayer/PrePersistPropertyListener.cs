@@ -32,11 +32,6 @@ namespace NotesDataAccesLayer
                     SetCommonProperties(dbEntityEntry);
                 }
             }
-            //test
-            //test
-            //some code
-            ///cwecwevwvwev
-
         }
 
         private static void SetCommonProperties(DbEntityEntry dbEntityEntry)
