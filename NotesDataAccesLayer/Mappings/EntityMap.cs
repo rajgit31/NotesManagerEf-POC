@@ -26,6 +26,8 @@ namespace NotesDataAccesLayer.Mappings
             this.Property(t => t.DateCreated);
             this.Property(t => t.UserId);
             this.Property(t => t.MarkAsDeleted);
+
+            this.Ignore(x => x.EntityState);
         }
     }
 }

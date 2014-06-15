@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("NotesDomain")]
-[assembly: AssemblyDescription("NotesDomain")]
+[assembly: AssemblyTitle("NotesManagerTransferEntities")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("NotesDomain")]
+[assembly: AssemblyProduct("NotesManagerTransferEntities")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1415ffd6-6a40-4298-a60d-404ecfa2b58f")]
+[assembly: Guid("6d338eb5-7f89-4d2d-bbaa-51f743c095fa")]
 
 // Version information for an assembly consists of the following four values:
 //

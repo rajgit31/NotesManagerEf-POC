@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using NotesDomain;
 
 namespace NotesDomain
@@ -13,7 +12,6 @@ namespace NotesDomain
         /// Gets or sets the state of the entity.
         /// </summary>
         /// <value>The state of the entity.</value>
-        [NotMapped]
         EntityState EntityState { get; set; }
     }
 

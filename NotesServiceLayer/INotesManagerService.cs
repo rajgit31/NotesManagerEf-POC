@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using NotesDomain;
+using NotesDomain.Entities;
 
 namespace NotesServiceLayer
 {

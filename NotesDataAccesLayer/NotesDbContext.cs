@@ -5,6 +5,7 @@ using System.Linq;
 using NotesDataAccesLayer.Mappings;
 using NotesDataAccesLayer.Migrations;
 using NotesDomain;
+using NotesDomain.Entities;
 using NotesDomainInterfaces;
 using EntityState = System.Data.Entity.EntityState;
 

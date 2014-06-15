@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace NotesDomain
+namespace NotesDomain.Entities
 {
     public class Note : BaseEntity
     {

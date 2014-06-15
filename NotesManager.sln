@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesDomainInterfaces", "No
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesDataAccesLayer", "NotesDataAccesLayer\NotesDataAccesLayer.csproj", "{C9FFBC3A-B476-48AA-98FA-F19BACBB93A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesManagerServices.IntegrationTests", "NotesManagerServices.IntegrationTests\NotesManagerServices.IntegrationTests.csproj", "{917B6666-37CE-4806-B449-3E368C24281D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesManagerTransferEntities", "NotesManagerTransferEntities\NotesManagerTransferEntities.csproj", "{F302B9AC-83A6-4F5B-A241-2D8466726F28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +39,10 @@ Global
 		{C9FFBC3A-B476-48AA-98FA-F19BACBB93A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9FFBC3A-B476-48AA-98FA-F19BACBB93A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9FFBC3A-B476-48AA-98FA-F19BACBB93A8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{917B6666-37CE-4806-B449-3E368C24281D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{917B6666-37CE-4806-B449-3E368C24281D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{917B6666-37CE-4806-B449-3E368C24281D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{917B6666-37CE-4806-B449-3E368C24281D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F302B9AC-83A6-4F5B-A241-2D8466726F28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F302B9AC-83A6-4F5B-A241-2D8466726F28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F302B9AC-83A6-4F5B-A241-2D8466726F28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F302B9AC-83A6-4F5B-A241-2D8466726F28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

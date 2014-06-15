@@ -1,4 +1,5 @@
 ﻿using NotesDomain;
+using NotesDomain.Entities;
 
 namespace NotesDataAccesLayer.Mappings
 {
@@ -12,15 +13,6 @@ namespace NotesDataAccesLayer.Mappings
                 .WithRequired(r => r.Note)
                 .HasForeignKey(x => x.FK_NoteId)
                 .WillCascadeOnDelete(true);
-        }
-    }
-
-    public class NoteVersionMap : EntityMap<NoteVersion>
-    {
-        public NoteVersionMap()
-        {
-            this.Property(x => x.Version);
-            this.Property(x => x.Name);
         }
     }
 }

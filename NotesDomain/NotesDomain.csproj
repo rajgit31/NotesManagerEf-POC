@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NotesDomain</RootNamespace>
     <AssemblyName>NotesDomain</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,14 +43,19 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="EntityState.cs" />
+    <Compile Include="ExcludeTransformationAttribute.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IFilterCriteria.cs" />
-    <Compile Include="Note.cs" />
-    <Compile Include="NoteVersion.cs" />
+    <Compile Include="Entities\Note.cs" />
+    <Compile Include="Entities\NoteVersion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryFilterCriteria.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Sql;
 using System.Linq;
 using NotesDomain;
+using NotesDomain.Entities;
 using NotesManager.ViewModels;
 using NotesServiceLayer;
 

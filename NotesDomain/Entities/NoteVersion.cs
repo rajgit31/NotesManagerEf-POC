@@ -1,4 +1,4 @@
-﻿namespace NotesDomain
+﻿namespace NotesDomain.Entities
 {
     public class NoteVersion : BaseEntity
     {
