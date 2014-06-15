@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using NotesDomain;
 using NotesDomain.Entities;
 using NotesDomainInterfaces;
+using NotesManagerTransferEntities;
 
 namespace NotesServiceLayer
 {
@@ -16,36 +18,41 @@ namespace NotesServiceLayer
             _noteRepo = _unitOfWork.Repository<Note>();
         }
 
-        public int Save(Note noteToSave)
+        public int Save(NoteDTO noteToSaveDTO)
         {
+            var noteToSave = noteToSaveDTO.ConvertToDomain();
             var id = _noteRepo.Add(noteToSave);
             _unitOfWork.Save();
             return id;
         }
 
-        public void Update(Note noteToUpdate)
+        public void Update(NoteDTO noteToUpdate)
         {
-            _noteRepo.Update(noteToUpdate);
+            var noteToSave = noteToUpdate.ConvertToDomain();
+            _noteRepo.Update(noteToSave);
             _unitOfWork.Save();
         }
 
-        public void Delete(Note noteDomain, bool disableSoftDelete = false)
+        public void Delete(NoteDTO noteDomain, bool disableSoftDelete = false)
         {
+            var noteToSave = noteDomain.ConvertToDomain();
+
             if (disableSoftDelete)
             {
-                _noteRepo.Delete(noteDomain);
+                _noteRepo.Delete(noteToSave);
             }
             else
             {
                 noteDomain.MarkAsDeleted = true;
-                _noteRepo.Update(noteDomain);
+                _noteRepo.Update(noteToSave);
             }
             _unitOfWork.Save();
-        } 
+        }
 
-        public IEnumerable<Note> GetNotes()
+        public IEnumerable<NoteDTO> GetNotes()
         {
-            return _noteRepo.All();
+            var notes = _noteRepo.All();
+            return notes.Select(x => x.ConvertToDTO());
         }
     }
 }

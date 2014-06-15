@@ -12,7 +12,6 @@ namespace NotesManager.ViewModels
                 Id = noteViewModel.Id,
                 Title = noteViewModel.Title,
                 Description = noteViewModel.Description,
-                //EntityState = EntityState.Added
             };
         }
     }

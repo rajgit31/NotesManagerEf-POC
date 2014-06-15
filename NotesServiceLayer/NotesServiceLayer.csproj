@@ -52,6 +52,10 @@
       <Project>{8C6802AC-D4B4-467C-98E1-D9E4D0FD930D}</Project>
       <Name>NotesDomain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NotesManagerTransferEntities\NotesManagerTransferEntities.csproj">
+      <Project>{F302B9AC-83A6-4F5B-A241-2D8466726F28}</Project>
+      <Name>NotesManagerTransferEntities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

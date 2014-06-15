@@ -25,18 +25,27 @@ namespace NotesManager.Presenters
         {
             var noteToSaveViewModel = _view.NoteToAdd;
             var noteDto = noteToSaveViewModel.ToDTO(); //Or use an automapper to do this so less coding!
-            
+            noteDto.EntityState = EntityStateDTO.Added;
             noteDto.NoteVersions = new List<NoteVersionDTO>()
             {
                 new NoteVersionDTO
                 {
                     Version = 1, 
                     Name = "v1.0",
-                    //EntityState = EntityState.Added
+                    EntityState = EntityStateDTO.Added,
+                    NoteSection = new List<NoteSectionDTO>
+                    {
+                        new NoteSectionDTO()
+                        {
+                            SectionColor = "Blue",
+                            SectionName = "Ship",
+                            EntityState = EntityStateDTO.Added
+                        }
+                    }
                 }
             };
 
-            //_notesService.Save(noteDto);
+            _notesService.Save(noteDto);
             RaiseNoteSaved(noteToSaveViewModel);
         }
 
@@ -77,28 +86,28 @@ namespace NotesManager.Presenters
         public void Edit()
         {
             var noteToEditViewModel = _view.NoteToEdit;
-            var noteDomain = noteToEditViewModel.ToDTO(); //Or use an automapper to do this so less coding!
-            //noteDomain.EntityState = EntityState.Modified;
-            //noteDomain.NoteVersions = new List<NoteVersion>()
-            //{
-            //    new NoteVersion
-            //    {
-            //        Version = 1, 
-            //        Name = "v1.0",
-            //        EntityState = EntityState.Modified
-            //    }
-            //};
+            var noteDTO = noteToEditViewModel.ToDTO(); //Or use an automapper to do this so less coding!
+            noteDTO.EntityState = EntityStateDTO.Modified;
+            noteDTO.NoteVersions = new List<NoteVersionDTO>()
+            {
+                new NoteVersionDTO
+                {
+                    Version = 1, 
+                    Name = "v1.0",
+                    EntityState = EntityStateDTO.Modified
+                }
+            };
 
-            //_notesService.Update(noteDomain);
+            _notesService.Update(noteDTO);
             RaiseNoteUpdated(noteToEditViewModel);
         }
 
         public void Delete()
         {
             var noteToDeleteViewModel = _view.NoteToDelete;
-            var noteDomain = noteToDeleteViewModel.ToDTO();
-           // noteDomain.EntityState = EntityState.Deleted;
-           // _notesService.Delete(noteDomain);
+            var noteDTO = noteToDeleteViewModel.ToDTO();
+            noteDTO.EntityState = EntityStateDTO.Deleted;
+            _notesService.Delete(noteDTO);
             RaiseNoteDeleted(noteToDeleteViewModel);
         }
     }
