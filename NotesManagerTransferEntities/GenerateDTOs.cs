@@ -15,6 +15,18 @@ public class NoteDTO
     public  System.String  Description { get; set; }
                     
     public  System.Collections.Generic.List<NoteVersionDTO>  NoteVersions { get; set; }
+                    
+    public  System.Int32  Id { get; set; }
+                    
+    public  System.Boolean  IsActive { get; set; }
+                    
+    public  System.DateTime  DateModified { get; set; }
+                    
+    public  System.DateTime  DateCreated { get; set; }
+                    
+    public  System.Guid  UserId { get; set; }
+                    
+    public  System.Boolean  MarkAsDeleted { get; set; }
 }   
              
 public class NoteVersionDTO 
@@ -26,5 +38,17 @@ public class NoteVersionDTO
     public  NotesDomain.Entities.Note  Note { get; set; }
                     
     public  System.Int32  FK_NoteId { get; set; }
+                    
+    public  System.Int32  Id { get; set; }
+                    
+    public  System.Boolean  IsActive { get; set; }
+                    
+    public  System.DateTime  DateModified { get; set; }
+                    
+    public  System.DateTime  DateCreated { get; set; }
+                    
+    public  System.Guid  UserId { get; set; }
+                    
+    public  System.Boolean  MarkAsDeleted { get; set; }
 }   
  

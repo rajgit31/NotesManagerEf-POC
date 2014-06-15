@@ -17,12 +17,12 @@
 // </auto-generated>
 //---------------------------------------------------
 <#
-    var assembly = Assembly.GetAssembly(typeof(Note));
+    var assembly = Assembly.GetAssembly(typeof(IEntity));
 
     List<Type> types = assembly.GetTypes().Where(p => !p.IsInterface).ToList();
-    var entityTypes =  from t in types
-                    where t.IsClass && t.Namespace == "NotesDomain.Entities"
-                    select t;
+    var entityTypes =  (from t in types
+                    where t.IsClass && typeof(IEntity).IsAssignableFrom(t) && t != typeof(BaseEntity)
+                    select t);
 
     const string dtoSuffix = "DTO";
 
