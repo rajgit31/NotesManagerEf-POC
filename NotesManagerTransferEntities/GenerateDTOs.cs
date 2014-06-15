@@ -34,7 +34,7 @@ namespace NotesManagerTransferEntities
 	                    
 		public  System.Guid  UserId { get; set; }
 	                    
-		public  NotesDomain.EntityState  EntityState { get; set; }
+		public  EntityStateDTO  EntityState { get; set; }
 	                    
 		public  System.Boolean  MarkAsDeleted { get; set; }
 	}   
@@ -57,7 +57,7 @@ namespace NotesManagerTransferEntities
 	                    
 		public  System.Guid  UserId { get; set; }
 	                    
-		public  NotesDomain.EntityState  EntityState { get; set; }
+		public  EntityStateDTO  EntityState { get; set; }
 	                    
 		public  System.Boolean  MarkAsDeleted { get; set; }
 	}   
@@ -84,7 +84,7 @@ namespace NotesManagerTransferEntities
 	                    
 		public  System.Guid  UserId { get; set; }
 	                    
-		public  NotesDomain.EntityState  EntityState { get; set; }
+		public  EntityStateDTO  EntityState { get; set; }
 	                    
 		public  System.Boolean  MarkAsDeleted { get; set; }
 	}   

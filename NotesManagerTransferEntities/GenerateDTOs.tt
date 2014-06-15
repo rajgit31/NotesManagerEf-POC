@@ -48,28 +48,34 @@ namespace NotesManagerTransferEntities
 
 		foreach (var propertyInfo in enumerable)
 		{
-			if (propertyInfo.PropertyType.Name == "IList`1" &&
-				propertyInfo.PropertyType.Namespace == "System.Collections.Generic")
-			{
-					 foreach (Type interfaceType in propertyInfo.PropertyType.GetInterfaces())
-							{
-								if (interfaceType.IsGenericType)
-								{
-									Type itemType = propertyInfo.PropertyType.GetGenericArguments()[0];
-									  #>                    
+		    if (propertyInfo.PropertyType.Name == "IList`1" &&
+		        propertyInfo.PropertyType.Namespace == "System.Collections.Generic")
+		    {
+		        foreach (Type interfaceType in propertyInfo.PropertyType.GetInterfaces())
+		        {
+		            if (interfaceType.IsGenericType)
+		            {
+		                Type itemType = propertyInfo.PropertyType.GetGenericArguments()[0];
+		                #>                    
 		public  System.Collections.Generic.List<<#= itemType.Name #>DTO>  <#= propertyInfo.Name #> { get; set; }
-	<#                        break;
-                                
-								}
-							}
-          
-			}
-			else
-			{
-				 #>                    
+	<# break;
+
+		            }
+		        }
+
+		    }
+			else if (propertyInfo.PropertyType.BaseType != null && propertyInfo.PropertyType.BaseType.FullName == "System.Enum")
+            {
+                 #>                    
+		public  <#= propertyInfo.Name #>DTO  <#= propertyInfo.Name #> { get; set; }
+	<#
+            }
+		    else
+		    {
+		        #>                    
 		public  <#= propertyInfo.PropertyType #>  <#= propertyInfo.Name #> { get; set; }
 	<#
-			}
+		    }
 		}
 		#>}   
 	 <#   
