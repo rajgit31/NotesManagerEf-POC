@@ -1,6 +1,6 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(ProjectDir)bin\Debug\NotesDomain.dll" #>
+<#@ assembly name="NotesDomain.dll" #>
 
 <#@ import namespace="NotesDomain" #>
 <#@ import namespace="NotesDomain.Entities" #>

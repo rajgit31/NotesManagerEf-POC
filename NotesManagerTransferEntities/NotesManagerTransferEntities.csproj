@@ -49,9 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="GenerateDTOs.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
+      <!--<Generator>TextTemplatingFileGenerator</Generator>-->
       <LastGenOutput>GenerateDTOs.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <T4ReferencePath Include="$(ProjectDir)bin\Debug" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -63,6 +66,16 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>attrib -R $(ProjectDir)GenerateDTOs.cs
+"C:\Program Files (x86)\Common Files\microsoft shared\TextTemplating\11.0\TextTransform.exe" $(ProjectDir)GenerateDTOs.tt</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TransformOnBuild>true</TransformOnBuild>
+    <TransformOutOfDateOnly>false</TransformOutOfDateOnly>
+    <OverwriteReadOnlyOutputFiles>true</OverwriteReadOnlyOutputFiles>
+    <IncludeDslT4Settings>true</IncludeDslT4Settings>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -24,5 +24,7 @@ public class NoteVersionDTO
     public  System.String  Name { get; set; }
                     
     public  NotesDomain.Entities.Note  Note { get; set; }
+                    
+    public  System.Int32  FK_NoteId { get; set; }
 }   
  
