@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using NotesManager.Convertions;
 using NotesManager.ViewModels;
 using NotesManagerTransferEntities;
 using NotesServiceLayer;
+using Omu.ValueInjecter;
 
 namespace NotesManager.Presenters
 {
@@ -24,9 +26,13 @@ namespace NotesManager.Presenters
         public void Save()
         {
             var noteToSaveViewModel = _view.NoteToAdd;
-            var noteDto = noteToSaveViewModel.ToDTO(); //Or use an automapper to do this so less coding!
-            noteDto.EntityState = EntityStateDTO.Added;
-            noteDto.NoteVersions = new List<NoteVersionDTO>()
+            
+            //var noteDto = noteToSaveViewModel.ToDTO(); 
+            var noteDTO = new NoteDTO();
+            noteDTO.InjectFrom(noteToSaveViewModel);
+
+            noteDTO.EntityState = EntityStateDTO.Added;
+            noteDTO.NoteVersions = new List<NoteVersionDTO>()
             {
                 new NoteVersionDTO
                 {
@@ -45,7 +51,7 @@ namespace NotesManager.Presenters
                 }
             };
 
-            _notesService.Save(noteDto);
+            _notesService.Save(noteDTO);
             RaiseNoteSaved(noteToSaveViewModel);
         }
 

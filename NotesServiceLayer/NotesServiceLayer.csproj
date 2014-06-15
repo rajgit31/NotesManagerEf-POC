@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Omu.ValueInjecter">
+      <HintPath>..\packages\valueinjecter.2.3.3\lib\net35\Omu.ValueInjecter.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,6 +59,9 @@
       <Project>{F302B9AC-83A6-4F5B-A241-2D8466726F28}</Project>
       <Name>NotesManagerTransferEntities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

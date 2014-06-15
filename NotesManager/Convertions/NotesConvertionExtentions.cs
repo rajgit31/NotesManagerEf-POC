@@ -1,7 +1,8 @@
 ﻿
+using NotesManager.ViewModels;
 using NotesManagerTransferEntities;
 
-namespace NotesManager.ViewModels
+namespace NotesManager.Convertions
 {
     public static class NotesConvertionExtentions
     {

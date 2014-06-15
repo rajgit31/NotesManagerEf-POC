@@ -4,6 +4,7 @@ using NotesDomain;
 using NotesDomain.Entities;
 using NotesDomainInterfaces;
 using NotesManagerTransferEntities;
+using Omu.ValueInjecter;
 
 namespace NotesServiceLayer
 {
@@ -20,8 +21,11 @@ namespace NotesServiceLayer
 
         public int Save(NoteDTO noteToSaveDTO)
         {
-            var noteToSave = noteToSaveDTO.ConvertToDomain();
-            var id = _noteRepo.Add(noteToSave);
+            //var noteToSave = noteToSaveDTO.ConvertToDomain();
+            var noteEntity = new Note();
+            noteEntity.InjectFrom<LoopValueInjection>(noteToSaveDTO);
+
+            var id = _noteRepo.Add(noteEntity);
             _unitOfWork.Save();
             return id;
         }
