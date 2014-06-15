@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Sql;
 using System.Linq;
-using NotesDomain;
-using NotesDomain.Entities;
 using NotesManager.ViewModels;
+using NotesManagerTransferEntities;
 using NotesServiceLayer;
 
 namespace NotesManager.Presenters
@@ -26,19 +24,19 @@ namespace NotesManager.Presenters
         public void Save()
         {
             var noteToSaveViewModel = _view.NoteToAdd;
-            var noteDomain = noteToSaveViewModel.ToDomain(); //Or use an automapper to do this so less coding!
-            noteDomain.EntityState = EntityState.Added;
-            noteDomain.NoteVersions = new List<NoteVersion>()
+            var noteDto = noteToSaveViewModel.ToDTO(); //Or use an automapper to do this so less coding!
+            
+            noteDto.NoteVersions = new List<NoteVersionDTO>()
             {
-                new NoteVersion
+                new NoteVersionDTO
                 {
                     Version = 1, 
                     Name = "v1.0",
-                    EntityState = EntityState.Added
+                    //EntityState = EntityState.Added
                 }
             };
 
-            _notesService.Save(noteDomain);
+            //_notesService.Save(noteDto);
             RaiseNoteSaved(noteToSaveViewModel);
         }
 
@@ -79,28 +77,28 @@ namespace NotesManager.Presenters
         public void Edit()
         {
             var noteToEditViewModel = _view.NoteToEdit;
-            var noteDomain = noteToEditViewModel.ToDomain(); //Or use an automapper to do this so less coding!
-            noteDomain.EntityState = EntityState.Modified;
-            noteDomain.NoteVersions = new List<NoteVersion>()
-            {
-                new NoteVersion
-                {
-                    Version = 1, 
-                    Name = "v1.0",
-                    EntityState = EntityState.Modified
-                }
-            };
+            var noteDomain = noteToEditViewModel.ToDTO(); //Or use an automapper to do this so less coding!
+            //noteDomain.EntityState = EntityState.Modified;
+            //noteDomain.NoteVersions = new List<NoteVersion>()
+            //{
+            //    new NoteVersion
+            //    {
+            //        Version = 1, 
+            //        Name = "v1.0",
+            //        EntityState = EntityState.Modified
+            //    }
+            //};
 
-            _notesService.Update(noteDomain);
+            //_notesService.Update(noteDomain);
             RaiseNoteUpdated(noteToEditViewModel);
         }
 
         public void Delete()
         {
             var noteToDeleteViewModel = _view.NoteToDelete;
-            var noteDomain = noteToDeleteViewModel.ToDomain();
-            noteDomain.EntityState = EntityState.Deleted;
-            _notesService.Delete(noteDomain);
+            var noteDomain = noteToDeleteViewModel.ToDTO();
+           // noteDomain.EntityState = EntityState.Deleted;
+           // _notesService.Delete(noteDomain);
             RaiseNoteDeleted(noteToDeleteViewModel);
         }
     }

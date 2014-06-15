@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappings\NoteSectopmMap.cs" />
     <Compile Include="Mappings\NoteVersionMap.cs" />
     <Compile Include="PrePersistPropertyListener.cs" />
     <Compile Include="EfUnitOfWork.cs" />

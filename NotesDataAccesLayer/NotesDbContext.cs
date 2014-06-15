@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using NotesDataAccesLayer.Mappings;
 using NotesDataAccesLayer.Migrations;
@@ -72,6 +73,7 @@ namespace NotesDataAccesLayer
         /// classes directly.</remarks>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Configurations.Add(new NoteMap());
             modelBuilder.Configurations.Add(new NoteVersionMap());
             

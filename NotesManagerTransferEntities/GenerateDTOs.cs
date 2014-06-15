@@ -7,48 +7,99 @@
 //     the code is regenerated.
 // </auto-generated>
 //---------------------------------------------------
-            
-public class NoteDTO 
-{                    
-    public  System.String  Title { get; set; }
-                    
-    public  System.String  Description { get; set; }
-                    
-    public  System.Collections.Generic.List<NoteVersionDTO>  NoteVersions { get; set; }
-                    
-    public  System.Int32  Id { get; set; }
-                    
-    public  System.Boolean  IsActive { get; set; }
-                    
-    public  System.DateTime  DateModified { get; set; }
-                    
-    public  System.DateTime  DateCreated { get; set; }
-                    
-    public  System.Guid  UserId { get; set; }
-                    
-    public  System.Boolean  MarkAsDeleted { get; set; }
-}   
-             
-public class NoteVersionDTO 
-{                    
-    public  System.Int32  Version { get; set; }
-                    
-    public  System.String  Name { get; set; }
-                    
-    public  NotesDomain.Entities.Note  Note { get; set; }
-                    
-    public  System.Int32  FK_NoteId { get; set; }
-                    
-    public  System.Int32  Id { get; set; }
-                    
-    public  System.Boolean  IsActive { get; set; }
-                    
-    public  System.DateTime  DateModified { get; set; }
-                    
-    public  System.DateTime  DateCreated { get; set; }
-                    
-    public  System.Guid  UserId { get; set; }
-                    
-    public  System.Boolean  MarkAsDeleted { get; set; }
-}   
- 
+
+using System;
+using NotesDomain.Entities;
+namespace NotesManagerTransferEntities
+{
+
+	            
+	public class NoteSectionDTO 
+	{                    
+		public  System.String  SectionName { get; set; }
+	                    
+		public  System.String  SectionColor { get; set; }
+	                    
+		public  NotesDomain.Entities.NoteVersion  NoteVersion { get; set; }
+	                    
+		public  System.Int32  FK_NoteVersionId { get; set; }
+	                    
+		public  System.Int32  Id { get; set; }
+	                    
+		public  System.Boolean  IsActive { get; set; }
+	                    
+		public  System.DateTime  DateModified { get; set; }
+	                    
+		public  System.DateTime  DateCreated { get; set; }
+	                    
+		public  System.Guid  UserId { get; set; }
+	                    
+		public  NotesDomain.EntityState  EntityState { get; set; }
+	                    
+		public  System.Boolean  MarkAsDeleted { get; set; }
+	}   
+	             
+	public class NoteDTO 
+	{                    
+		public  System.String  Title { get; set; }
+	                    
+		public  System.String  Description { get; set; }
+	                    
+		public  System.Collections.Generic.List<NoteVersionDTO>  NoteVersions { get; set; }
+	                    
+		public  System.Int32  Id { get; set; }
+	                    
+		public  System.Boolean  IsActive { get; set; }
+	                    
+		public  System.DateTime  DateModified { get; set; }
+	                    
+		public  System.DateTime  DateCreated { get; set; }
+	                    
+		public  System.Guid  UserId { get; set; }
+	                    
+		public  NotesDomain.EntityState  EntityState { get; set; }
+	                    
+		public  System.Boolean  MarkAsDeleted { get; set; }
+	}   
+	             
+	public class NoteVersionDTO 
+	{                    
+		public  System.Int32  Version { get; set; }
+	                    
+		public  System.String  Name { get; set; }
+	                    
+		public  NotesDomain.Entities.Note  Note { get; set; }
+	                    
+		public  System.Int32  FK_NoteId { get; set; }
+	                    
+		public  System.Collections.Generic.List<NoteSectionDTO>  NoteSection { get; set; }
+	                    
+		public  System.Int32  Id { get; set; }
+	                    
+		public  System.Boolean  IsActive { get; set; }
+	                    
+		public  System.DateTime  DateModified { get; set; }
+	                    
+		public  System.DateTime  DateCreated { get; set; }
+	                    
+		public  System.Guid  UserId { get; set; }
+	                    
+		public  NotesDomain.EntityState  EntityState { get; set; }
+	                    
+		public  System.Boolean  MarkAsDeleted { get; set; }
+	}   
+	             
+
+	public enum EntityStateDTO
+	{
+	   Unchanged,
+	  Added,
+	  Modified,
+	  Deleted,
+	  DeAttached,
+		}    
+}      
+	
+	
+	
+

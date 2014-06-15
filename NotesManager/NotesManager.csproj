@@ -89,6 +89,7 @@
     <Compile Include="Presenters\NotesManagerPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\NotesConvertionExtentions.cs" />
     <Compile Include="ViewModels\NoteViewModel.cs" />
     <EmbeddedResource Include="NotesManagerForm.resx">
       <DependentUpon>NotesManagerForm.cs</DependentUpon>
@@ -130,6 +131,10 @@
     <ProjectReference Include="..\NotesDomain\NotesDomain.csproj">
       <Project>{8C6802AC-D4B4-467C-98E1-D9E4D0FD930D}</Project>
       <Name>NotesDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NotesManagerTransferEntities\NotesManagerTransferEntities.csproj">
+      <Project>{F302B9AC-83A6-4F5B-A241-2D8466726F28}</Project>
+      <Name>NotesManagerTransferEntities</Name>
     </ProjectReference>
     <ProjectReference Include="..\NotesServiceLayer\NotesServiceLayer.csproj">
       <Project>{8901AE49-B0E0-471D-A1F1-7E15C32E417F}</Project>

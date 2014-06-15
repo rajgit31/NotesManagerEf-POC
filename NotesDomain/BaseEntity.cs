@@ -46,8 +46,6 @@ namespace NotesDomain
         /// Gets or sets the state of the entity.
         /// </summary>
         /// <value>The state of the entity.</value>
-        //[NotMapped]
-        [ExcludeTransformation]
         public EntityState EntityState { get; set; }
 
         [Required]
