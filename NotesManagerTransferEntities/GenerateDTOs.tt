@@ -67,9 +67,21 @@ namespace NotesManagerTransferEntities
 			else if (propertyInfo.PropertyType.BaseType != null && propertyInfo.PropertyType.BaseType.FullName == "System.Enum")
             {
                  #>                    
-		public  <#= propertyInfo.Name #>DTO  <#= propertyInfo.Name #> { get; set; }
+		public  <#= propertyInfo.PropertyType.Name #>DTO  <#= propertyInfo.Name #> { get; set; }
 	<#
             }
+			else if (Nullable.GetUnderlyingType(propertyInfo.PropertyType) != null)
+			{
+			    var nullableType = Nullable.GetUnderlyingType(propertyInfo.PropertyType);
+				if (nullableType.IsValueType)
+				{
+					nullableType = typeof(Nullable<>).MakeGenericType(nullableType);
+					 #>                    
+		public  <#= nullableType.GetGenericArguments()[0].Name #>?  <#= propertyInfo.Name #> { get; set; }
+	<#
+
+				}
+			}
 		    else
 		    {
 		        #>                    

@@ -24,6 +24,10 @@ namespace NotesManagerTransferEntities
 	                    
 		public  System.Int32  FK_NoteVersionId { get; set; }
 	                    
+		public  NoteSectionTypeDTO  SectionType { get; set; }
+	                    
+		public  Guid?  AddtionalId { get; set; }
+	                    
 		public  System.Int32  Id { get; set; }
 	                    
 		public  System.Boolean  IsActive { get; set; }
@@ -89,6 +93,13 @@ namespace NotesManagerTransferEntities
 		public  System.Boolean  MarkAsDeleted { get; set; }
 	}   
 	             
+
+	public enum NoteSectionTypeDTO
+	{
+	   Full,
+	  Half,
+	  Quatar,
+		}            
 
 	public enum EntityStateDTO
 	{
