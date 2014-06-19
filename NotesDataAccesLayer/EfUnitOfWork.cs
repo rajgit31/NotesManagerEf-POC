@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using NotesDataAccesLayer.Repositories;
 using NotesDomain;
 using NotesDomainInterfaces;
@@ -39,6 +40,13 @@ namespace NotesDataAccesLayer
         public int Save()
         {
             return _context.SaveChanges();
+        }
+
+        public int Save<TEntity>(TEntity entity) where TEntity : BaseEntity, IEntity
+        {
+            _context.SaveChanges();
+            DbEntityEntry<TEntity> dbEntityEntry = _context.Entry(entity);
+            return dbEntityEntry.Entity.Id;
         }
 
         /// <summary>

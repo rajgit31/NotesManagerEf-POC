@@ -44,7 +44,7 @@ namespace NotesDomainInterfaces
         /// Adds the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        int Add(TEntity entity);
+        void Add(TEntity entity);
         /// <summary>
         /// Adds the specified entities.
         /// </summary>

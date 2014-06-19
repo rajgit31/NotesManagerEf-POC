@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conversions\MapEnum.cs" />
     <Compile Include="INotesManagerService.cs" />
     <Compile Include="NotesManagerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

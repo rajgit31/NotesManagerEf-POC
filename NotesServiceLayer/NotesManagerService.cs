@@ -19,25 +19,43 @@ namespace NotesServiceLayer
             _noteRepo = _unitOfWork.Repository<Note>();
         }
 
-        public int Save(NoteDTO noteToSaveDTO)
+        public NoteDTO FindById(int id)
+        {
+            var domain = _noteRepo.Find(new []{id});
+
+            var dto = new NoteDTO();
+            dto.InjectFrom(domain);
+            return dto;
+        }
+
+        public NoteDTO FindByTitle(string title)
+        {
+            var domain = _noteRepo.Find(x => x.Title == title);
+            var dto = new NoteDTO();
+            dto.InjectFrom(domain);
+            return dto;
+        }
+
+        public void Save(NoteDTO noteToSaveDTO)
         {
             //var noteToSave = noteToSaveDTO.ConvertToDomain();
             var noteEntity = new Note();
             noteEntity.InjectFrom<LoopValueInjection>(noteToSaveDTO);
-
-            var id = _noteRepo.Add(noteEntity);
+            noteEntity.InjectFrom<MapEnum>(new { EntityState = noteToSaveDTO.EntityState });
+            _noteRepo.Add(noteEntity);
             _unitOfWork.Save();
-            return id;
         }
 
-        public void Update(NoteDTO noteToUpdate)
+        public int Update(NoteDTO noteToUpdate)
         {
-            var noteToSave = noteToUpdate.ConvertToDomain();
-            _noteRepo.Update(noteToSave);
-            _unitOfWork.Save();
+            var noteEntity = new Note();
+            noteEntity.InjectFrom<LoopValueInjection>(noteToUpdate);
+            noteEntity.InjectFrom<MapEnum>(new { EntityState = noteToUpdate.EntityState });
+            _noteRepo.Update(noteEntity);
+            return _unitOfWork.Save();
         }
 
-        public void Delete(NoteDTO noteDomain, bool disableSoftDelete = false)
+        public int Delete(NoteDTO noteDomain, bool disableSoftDelete = false)
         {
             var noteToSave = noteDomain.ConvertToDomain();
 
@@ -50,7 +68,7 @@ namespace NotesServiceLayer
                 noteDomain.MarkAsDeleted = true;
                 _noteRepo.Update(noteToSave);
             }
-            _unitOfWork.Save();
+            return _unitOfWork.Save();
         }
 
         public IEnumerable<NoteDTO> GetNotes()

@@ -53,7 +53,8 @@ namespace NotesDataAccesLayer.Repositories
         {
             if (_withCriteria)
             {
-                return _dbSet.Where(_filterCriteria.FilterExprssion).ToList();
+                //return _dbSet.Where(_filterCriteria.FilterExprssion).ToList();
+                return _dbSet.Where(x => x.Id == 18).ToList();
             }
 
             return _dbSet.ToList();
@@ -104,10 +105,9 @@ namespace NotesDataAccesLayer.Repositories
         /// Adds the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        public int Add(TEntity entity)
+        public void Add(TEntity entity)
         {
-            TEntity add = _dbSet.Add(entity);
-            return add.Id;
+            _dbSet.Add(entity);
         }
 
         /// <summary>

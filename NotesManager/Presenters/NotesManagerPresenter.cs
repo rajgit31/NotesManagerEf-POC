@@ -25,34 +25,35 @@ namespace NotesManager.Presenters
 
         public void Save()
         {
-            var noteToSaveViewModel = _view.NoteToAdd;
+            //var noteToSaveViewModel = _view.NoteToAdd;
             
-            //var noteDto = noteToSaveViewModel.ToDTO(); 
-            var noteDTO = new NoteDTO();
-            noteDTO.InjectFrom(noteToSaveViewModel);
+            ////var noteDto = noteToSaveViewModel.ToDTO(); 
+            //var noteDTO = new NoteDTO();
+            //noteDTO.InjectFrom(noteToSaveViewModel);
 
-            noteDTO.EntityState = EntityStateDTO.Added;
-            noteDTO.NoteVersions = new List<NoteVersionDTO>()
-            {
-                new NoteVersionDTO
-                {
-                    Version = 1, 
-                    Name = "v1.0",
-                    EntityState = EntityStateDTO.Added,
-                    NoteSection = new List<NoteSectionDTO>
-                    {
-                        new NoteSectionDTO()
-                        {
-                            SectionColor = "Blue",
-                            SectionName = "Ship",
-                            EntityState = EntityStateDTO.Added
-                        }
-                    }
-                }
-            };
+            //noteDTO.EntityState = EntityStateDTO.Added;
+            //noteDTO.NoteVersions = new List<NoteVersionDTO>()
+            //{
+            //    new NoteVersionDTO
+            //    {
+            //        Version = 1, 
+            //        Name = "v1.0",
+            //        EntityState = EntityStateDTO.Added,
+            //        NoteSection = new List<NoteSectionDTO>
+            //        {
+            //            new NoteSectionDTO()
+            //            {
+            //                SectionColor = "Blue",
+            //                SectionName = "Ship",
+            //                EntityState = EntityStateDTO.Added
+            //            }
+            //        }
+            //    }
+            //};
 
-            _notesService.Save(noteDTO);
-            RaiseNoteSaved(noteToSaveViewModel);
+            //_notesService.Save(noteDTO);
+            //RaiseNoteSaved(noteToSaveViewModel);
+            TrackableTransaction();
         }
 
         public IList<NoteViewModel> LoadNotes()
@@ -106,6 +107,48 @@ namespace NotesManager.Presenters
 
             _notesService.Update(noteDTO);
             RaiseNoteUpdated(noteToEditViewModel);
+        }
+
+        public void TrackableTransaction()
+        {
+            //Add new note
+            var noteDto = new NoteDTO()
+            {
+                EntityState = EntityStateDTO.Added,
+                Title = "TrackableNote1",
+                NoteVersions = new List<NoteVersionDTO>
+                {
+                    new NoteVersionDTO()
+                    {
+                        EntityState = EntityStateDTO.Added,
+                        Name = "vT", Version = 99,
+                         NoteSection = new List<NoteSectionDTO>
+                        {
+                            new NoteSectionDTO()
+                            {
+                                EntityState = EntityStateDTO.Added,
+                                SectionColor = "Blue",
+                                SectionName = "Ship",
+                            }
+                        }
+                    }
+                }
+            };
+
+            _notesService.Save(noteDto);
+
+            //Get added note to get the id
+            var note = _notesService.FindByTitle(noteDto.Title);
+
+
+            //Set id and update the existing note
+            noteDto.Title = "TrackableNote2";
+            noteDto.EntityState = EntityStateDTO.Modified;
+            noteDto.Id = note.Id;
+            //noteDto.Id = newId;
+
+            _notesService.Update(noteDto);
+
         }
 
         public void Delete()

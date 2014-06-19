@@ -8,8 +8,10 @@ namespace NotesServiceLayer
     public interface INotesManagerService
     {
         IEnumerable<NoteDTO> GetNotes();
-        int Save(NoteDTO noteToSave);
-        void Update(NoteDTO noteToUpdate);
-        void Delete(NoteDTO noteDomain, bool disableSoftDelete = false);
+        NoteDTO FindById(int id);
+        NoteDTO FindByTitle(string title);
+        void Save(NoteDTO noteToSave);
+        int Update(NoteDTO noteToUpdate);
+        int Delete(NoteDTO noteDomain, bool disableSoftDelete = false);
     }
 }
