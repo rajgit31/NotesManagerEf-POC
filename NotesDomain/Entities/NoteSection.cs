@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace NotesDomain.Entities
+﻿namespace NotesDomain.Entities
 {
     public class NoteSection : BaseEntity
     {
@@ -9,15 +7,5 @@ namespace NotesDomain.Entities
 
         public virtual NoteVersion NoteVersion { get; set; }
         public int FK_NoteVersionId { get; set; }
-        public NoteSectionType SectionType { get; set; }
-
-        public Guid? AddtionalId { get; set; }
-    }
-
-    public enum NoteSectionType
-    {
-        Full,
-        Half,
-        Quatar
     }
 }
