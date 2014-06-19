@@ -132,14 +132,11 @@ namespace ValueInjecterTests
                     }
                 }
             };
-            var templateDTO = new TemplateDTO(){};
+            var templateDTO = new TemplateDTO(){TemplateVesionsDTOs = new List<TemplateVersionDTO>()};
             templateDTO.InjectFrom(templateDomain);
 
             templateDTO.TemplateVesionsDTOs.InjectFrom<TemplateVersionDomain, TemplateVersionDTO>(templateDomain.TemplateVesions);
             
-
-            
-
             Assert.AreEqual("version1", templateDTO.TemplateVesionsDTOs.First().Name);
         }
 

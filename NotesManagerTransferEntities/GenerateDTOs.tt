@@ -19,8 +19,8 @@
 // </auto-generated>
 //---------------------------------------------------
 
-using System;
 using NotesDomain.Entities;
+using System;
 namespace NotesManagerTransferEntities
 {
 
@@ -35,9 +35,41 @@ namespace NotesManagerTransferEntities
 		const string dtoSuffix = "DTO";
 
 		foreach (var t in entityTypes)
-		{#>            
+		{#>		
+	[Serializable]            
 	public class <#= t.Name+dtoSuffix #> 
-	{<#
+	{	
+		public <#= t.Name+dtoSuffix #>() 
+		{<#
+			var propertyInfosCtro = t.GetProperties();
+
+			IEnumerable<PropertyInfo> enumerableCtro = propertyInfosCtro.Where(p =>
+			{
+				var attributes = p.GetCustomAttributes(false);
+				return !attributes.Any(a => a is ExcludeTransformationAttribute);
+			});
+
+			foreach (var propertyInfo in enumerableCtro)
+			{
+				if (propertyInfo.PropertyType.Name == "IList`1" &&
+					propertyInfo.PropertyType.Namespace == "System.Collections.Generic")
+				{
+					foreach (Type interfaceType in propertyInfo.PropertyType.GetInterfaces())
+					{
+						if (interfaceType.IsGenericType)
+						{
+							Type itemType = propertyInfo.PropertyType.GetGenericArguments()[0];
+							#>                    
+			  <#= propertyInfo.Name #> = new System.Collections.Generic.List<<#= itemType.Name #>DTO>();
+							<# break;
+
+						}
+					}
+				}
+			} #> 
+		}	
+	
+		<#
 		var propertyInfos = t.GetProperties();
 
 		IEnumerable<PropertyInfo> enumerable = propertyInfos.Where(p =>

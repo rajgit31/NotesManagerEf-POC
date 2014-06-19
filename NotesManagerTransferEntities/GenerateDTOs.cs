@@ -8,14 +8,20 @@
 // </auto-generated>
 //---------------------------------------------------
 
-using System;
 using NotesDomain.Entities;
+using System;
 namespace NotesManagerTransferEntities
 {
 
-	            
+			
+	[Serializable]            
 	public class NoteSectionDTO 
-	{                    
+	{	
+		public NoteSectionDTO() 
+		{ 
+		}	
+	
+		                    
 		public  System.String  SectionName { get; set; }
 	                    
 		public  System.String  SectionColor { get; set; }
@@ -42,9 +48,17 @@ namespace NotesManagerTransferEntities
 	                    
 		public  System.Boolean  MarkAsDeleted { get; set; }
 	}   
-	             
+	 		
+	[Serializable]            
 	public class NoteDTO 
-	{                    
+	{	
+		public NoteDTO() 
+		{                    
+			  NoteVersions = new System.Collections.Generic.List<NoteVersionDTO>();
+							 
+		}	
+	
+		                    
 		public  System.String  Title { get; set; }
 	                    
 		public  System.String  Description { get; set; }
@@ -65,9 +79,17 @@ namespace NotesManagerTransferEntities
 	                    
 		public  System.Boolean  MarkAsDeleted { get; set; }
 	}   
-	             
+	 		
+	[Serializable]            
 	public class NoteVersionDTO 
-	{                    
+	{	
+		public NoteVersionDTO() 
+		{                    
+			  NoteSection = new System.Collections.Generic.List<NoteSectionDTO>();
+							 
+		}	
+	
+		                    
 		public  System.Int32  Version { get; set; }
 	                    
 		public  System.String  Name { get; set; }
