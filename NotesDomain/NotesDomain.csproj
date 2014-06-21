@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Entities\NoteSection.cs" />
+    <Compile Include="Entities\NoteSectionType.cs" />
     <Compile Include="EntityState.cs" />
     <Compile Include="ExcludeTransformationAttribute.cs" />
     <Compile Include="IEntity.cs" />

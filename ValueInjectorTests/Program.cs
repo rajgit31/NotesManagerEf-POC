@@ -1,30 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using Omu.ValueInjecter;
 
 namespace ValueInjecterTests
 {
-    public class MapEnum : ConventionInjection
-    {
-        protected override bool Match(ConventionInfo c)
-        {
-            return c.SourceProp.Name == c.TargetProp.Name 
-                && c.SourceProp.Type.IsEnum 
-                && c.TargetProp.Type.IsEnum;
-        }
-
-        protected override object SetValue(ConventionInfo c)
-        {
-            return Enum.Parse(c.TargetProp.Type, c.SourceProp.Value.ToString());
-        }
-    }
-
-   
-
-   
-
     #region DTO
     public enum TemplateTypeDTO
     {
@@ -89,30 +69,7 @@ namespace ValueInjecterTests
         public int Id { get; set; }
         public string Name { get; set; }
     }
-    #endregion 
-    
-
-    public static class ViExt
-    {
-        public static List<TTo> InjectFrom<TFrom, TTo>(this List<TTo> to, params IEnumerable<TFrom>[] sources) where TTo : new()
-        {
-            if (to == null)
-            {
-                throw new ArgumentNullException("to : You must initialize the source collection.");
-            }
-
-            foreach (var from in sources)
-            {
-                foreach (var source in from)
-                {
-                    var target = new TTo();
-                    target.InjectFrom(source);
-                    to.Add(target);
-                }
-            }
-            return to;
-        }
-    }
+    #endregion
 
     [TestFixture]
     public class CollectionTests

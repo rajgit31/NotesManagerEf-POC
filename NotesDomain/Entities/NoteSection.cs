@@ -13,11 +13,4 @@ namespace NotesDomain.Entities
 
         public Guid? AddtionalId { get; set; }
     }
-
-    public enum NoteSectionType
-    {
-        Full,
-        Half,
-        Quatar
-    }
 }

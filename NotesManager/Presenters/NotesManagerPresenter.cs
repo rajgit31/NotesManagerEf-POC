@@ -94,14 +94,14 @@ namespace NotesManager.Presenters
         {
             var noteToEditViewModel = _view.NoteToEdit;
             var noteDTO = noteToEditViewModel.ToDTO(); //Or use an automapper to do this so less coding!
-            noteDTO.EntityState = EntityStateDTO.Modified;
+            noteDTO.EntityStateDTO = EntityStateDTO.Modified;
             noteDTO.NoteVersions = new List<NoteVersionDTO>()
             {
                 new NoteVersionDTO
                 {
                     Version = 1, 
                     Name = "v1.0",
-                    EntityState = EntityStateDTO.Modified
+                    EntityStateDTO = EntityStateDTO.Modified
                 }
             };
 
@@ -114,19 +114,19 @@ namespace NotesManager.Presenters
             //Add new note
             var noteDto = new NoteDTO()
             {
-                EntityState = EntityStateDTO.Added,
+                EntityStateDTO = EntityStateDTO.Added,
                 Title = "TrackableNote1",
                 NoteVersions = new List<NoteVersionDTO>
                 {
                     new NoteVersionDTO()
                     {
-                        EntityState = EntityStateDTO.Added,
+                        EntityStateDTO = EntityStateDTO.Added,
                         Name = "vT", Version = 99,
                          NoteSection = new List<NoteSectionDTO>
                         {
                             new NoteSectionDTO()
                             {
-                                EntityState = EntityStateDTO.Added,
+                                EntityStateDTO = EntityStateDTO.Added,
                                 SectionColor = "Blue",
                                 SectionName = "Ship",
                             }
@@ -143,7 +143,7 @@ namespace NotesManager.Presenters
 
             //Set id and update the existing note
             noteDto.Title = "TrackableNote2";
-            noteDto.EntityState = EntityStateDTO.Modified;
+            noteDto.EntityStateDTO = EntityStateDTO.Modified;
             noteDto.Id = note.Id;
             //noteDto.Id = newId;
 
@@ -155,7 +155,7 @@ namespace NotesManager.Presenters
         {
             var noteToDeleteViewModel = _view.NoteToDelete;
             var noteDTO = noteToDeleteViewModel.ToDTO();
-            noteDTO.EntityState = EntityStateDTO.Deleted;
+            noteDTO.EntityStateDTO = EntityStateDTO.Deleted;
             _notesService.Delete(noteDTO);
             RaiseNoteDeleted(noteToDeleteViewModel);
         }

@@ -16,13 +16,13 @@ namespace NotesManagerTransferEntities
                 Id = note.Id,
                 Title = note.Title,
                 Description = note.Description,
-                EntityState = ConvertState(note.EntityState),
+                EntityState = ConvertState(note.EntityStateDTO),
                 IsActive = note.IsActive,
                 NoteVersions = note.NoteVersions.Select(x => new NoteVersion()
                 {
                     Name = x.Name,
                     Version = x.Version,
-                    EntityState = ConvertState(x.EntityState),
+                    EntityState = ConvertState(x.EntityStateDTO),
                     NoteSection = x.NoteSection.Select(dto => dto.ConvertToDomain()).ToList(),
                 }).ToList()
             };
@@ -35,13 +35,13 @@ namespace NotesManagerTransferEntities
                 Id = note.Id,
                 Title = note.Title,
                 Description = note.Description,
-                EntityState = ConvertState(note.EntityState),
+                EntityStateDTO = ConvertState(note.EntityState),
                 IsActive = note.IsActive,
                 NoteVersions = note.NoteVersions.Select(x => new NoteVersionDTO()
                 {
                     Name = x.Name,
                     Version = x.Version,
-                    EntityState = ConvertState(x.EntityState),
+                    EntityStateDTO = ConvertState(x.EntityState),
                     NoteSection = x.NoteSection.Select(domain => domain.ConvertToDTO()).ToList(),
                     
                 }).ToList()
@@ -55,7 +55,7 @@ namespace NotesManagerTransferEntities
                 Id = noteSection.Id,
                 SectionColor = noteSection.SectionColor,
                 SectionName = noteSection.SectionName,
-                EntityState = ConvertState(noteSection.EntityState),
+                EntityState = ConvertState(noteSection.EntityStateDTO),
                 IsActive = noteSection.IsActive,
             };
         }
@@ -67,7 +67,7 @@ namespace NotesManagerTransferEntities
                 Id = noteSection.Id,
                 SectionColor = noteSection.SectionColor,
                 SectionName = noteSection.SectionName,
-                EntityState = ConvertState(noteSection.EntityState),
+                EntityStateDTO = ConvertState(noteSection.EntityState),
                 IsActive = noteSection.IsActive,
             };
         }

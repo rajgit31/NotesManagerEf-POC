@@ -66,6 +66,13 @@ namespace NotesManagerTransferEntities
 						}
 					}
 				}
+				else if (propertyInfo.PropertyType.IsClass && propertyInfo.PropertyType.IsPublic &&
+                             typeof (BaseEntity).IsAssignableFrom(propertyInfo.PropertyType))
+                    {
+                        #>                    
+		        <#= propertyInfo.Name #><#=dtoSuffix#> = new <#= propertyInfo.PropertyType.Name #><#=dtoSuffix#>();
+	<#
+                    }
 			} #> 
 		}	
 	
@@ -89,7 +96,7 @@ namespace NotesManagerTransferEntities
 		            {
 		                Type itemType = propertyInfo.PropertyType.GetGenericArguments()[0];
 		                #>                    
-		public  System.Collections.Generic.List<<#= itemType.Name #>DTO>  <#= propertyInfo.Name #> { get; set; }
+		public  System.Collections.Generic.List<<#= itemType.Name #><#=dtoSuffix#>>  <#= propertyInfo.Name #> { get; set; }
 	<# break;
 
 		            }
@@ -99,7 +106,7 @@ namespace NotesManagerTransferEntities
 			else if (propertyInfo.PropertyType.BaseType != null && propertyInfo.PropertyType.BaseType.FullName == "System.Enum")
             {
                  #>                    
-		public  <#= propertyInfo.PropertyType.Name #>DTO  <#= propertyInfo.Name #> { get; set; }
+		public  <#= propertyInfo.PropertyType.Name #><#=dtoSuffix#>  <#= propertyInfo.Name #><#=dtoSuffix#> { get; set; }
 	<#
             }
 			else if (Nullable.GetUnderlyingType(propertyInfo.PropertyType) != null)
@@ -114,6 +121,13 @@ namespace NotesManagerTransferEntities
 
 				}
 			}
+			else if (propertyInfo.PropertyType.IsClass && propertyInfo.PropertyType.IsPublic &&
+                             typeof (BaseEntity).IsAssignableFrom(propertyInfo.PropertyType))
+                    {
+                        #>                    
+		public  <#= propertyInfo.PropertyType.Name #><#=dtoSuffix#>  <#= propertyInfo.Name #><#=dtoSuffix#> { get; set; }
+	<#
+                    }
 		    else
 		    {
 		        #>                    

@@ -51,6 +51,7 @@
     <None Include="GenerateDTOs.tt">
       <!--<Generator>TextTemplatingFileGenerator</Generator>-->
       <LastGenOutput>GenerateDTOs.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
     </None>
   </ItemGroup>
   <ItemGroup>

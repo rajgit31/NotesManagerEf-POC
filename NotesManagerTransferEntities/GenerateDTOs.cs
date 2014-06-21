@@ -18,7 +18,9 @@ namespace NotesManagerTransferEntities
 	public class NoteSectionDTO 
 	{	
 		public NoteSectionDTO() 
-		{ 
+		{                    
+		        NoteVersionDTO = new NoteVersionDTO();
+	 
 		}	
 	
 		                    
@@ -26,11 +28,11 @@ namespace NotesManagerTransferEntities
 	                    
 		public  System.String  SectionColor { get; set; }
 	                    
-		public  NotesDomain.Entities.NoteVersion  NoteVersion { get; set; }
+		public  NoteVersionDTO  NoteVersionDTO { get; set; }
 	                    
 		public  System.Int32  FK_NoteVersionId { get; set; }
 	                    
-		public  NoteSectionTypeDTO  SectionType { get; set; }
+		public  NoteSectionTypeDTO  SectionTypeDTO { get; set; }
 	                    
 		public  Guid?  AddtionalId { get; set; }
 	                    
@@ -44,7 +46,7 @@ namespace NotesManagerTransferEntities
 	                    
 		public  System.Guid  UserId { get; set; }
 	                    
-		public  EntityStateDTO  EntityState { get; set; }
+		public  EntityStateDTO  EntityStateDTO { get; set; }
 	                    
 		public  System.Boolean  MarkAsDeleted { get; set; }
 	}   
@@ -75,7 +77,7 @@ namespace NotesManagerTransferEntities
 	                    
 		public  System.Guid  UserId { get; set; }
 	                    
-		public  EntityStateDTO  EntityState { get; set; }
+		public  EntityStateDTO  EntityStateDTO { get; set; }
 	                    
 		public  System.Boolean  MarkAsDeleted { get; set; }
 	}   
@@ -85,6 +87,8 @@ namespace NotesManagerTransferEntities
 	{	
 		public NoteVersionDTO() 
 		{                    
+		        NoteDTO = new NoteDTO();
+	                    
 			  NoteSection = new System.Collections.Generic.List<NoteSectionDTO>();
 							 
 		}	
@@ -94,7 +98,7 @@ namespace NotesManagerTransferEntities
 	                    
 		public  System.String  Name { get; set; }
 	                    
-		public  NotesDomain.Entities.Note  Note { get; set; }
+		public  NoteDTO  NoteDTO { get; set; }
 	                    
 		public  System.Int32  FK_NoteId { get; set; }
 	                    
@@ -110,7 +114,7 @@ namespace NotesManagerTransferEntities
 	                    
 		public  System.Guid  UserId { get; set; }
 	                    
-		public  EntityStateDTO  EntityState { get; set; }
+		public  EntityStateDTO  EntityStateDTO { get; set; }
 	                    
 		public  System.Boolean  MarkAsDeleted { get; set; }
 	}   

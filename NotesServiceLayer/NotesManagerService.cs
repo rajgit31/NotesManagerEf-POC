@@ -41,7 +41,7 @@ namespace NotesServiceLayer
             //var noteToSave = noteToSaveDTO.ConvertToDomain();
             var noteEntity = new Note();
             noteEntity.InjectFrom<LoopValueInjection>(noteToSaveDTO);
-            noteEntity.InjectFrom<MapEnum>(new { EntityState = noteToSaveDTO.EntityState });
+            noteEntity.InjectFrom<MapEnum>(new { EntityState = noteToSaveDTO.EntityStateDTO });
             _noteRepo.Add(noteEntity);
             _unitOfWork.Save();
         }
@@ -50,7 +50,7 @@ namespace NotesServiceLayer
         {
             var noteEntity = new Note();
             noteEntity.InjectFrom<LoopValueInjection>(noteToUpdate);
-            noteEntity.InjectFrom<MapEnum>(new { EntityState = noteToUpdate.EntityState });
+            noteEntity.InjectFrom<MapEnum>(new { EntityState = noteToUpdate.EntityStateDTO });
             _noteRepo.Update(noteEntity);
             return _unitOfWork.Save();
         }
