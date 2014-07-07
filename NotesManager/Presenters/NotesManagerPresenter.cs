@@ -23,11 +23,59 @@ namespace NotesManager.Presenters
             _view = view;
         }
 
+        public void SaveFillerForm()
+        {
+            var mapDto = new QuestionAnswerMappingDTO()
+            {
+                Client = "Client",
+                NoteDTO = new NoteDTO{Id = 19, Title = "Bar"} //existing id
+            };
+
+            var fillerForm = new FillerFormDTO()
+            {
+                QuestionAnswerMappings = new List<QuestionAnswerMappingDTO>
+                {
+                    mapDto
+                },
+                Name = "Filler",
+                
+            };
+
+            _notesService.SaveFiller(fillerForm);
+
+
+        }
+
+
+        public void EditFillerForm()
+        {
+            var mapDto = new QuestionAnswerMappingDTO()
+            {
+                Client = "ClientEdited",
+                NoteDTO = new NoteDTO { Id = 19, Title = "Bar" } //existing id
+            };
+
+            var fillerForm = new FillerFormDTO()
+            {
+                QuestionAnswerMappings = new List<QuestionAnswerMappingDTO>
+                {
+                    mapDto
+                },
+                Name = "Filler",
+
+            };
+
+            _notesService.EditFiller(fillerForm);
+
+
+        }
+
+
         public void Save()
         {
-            //var noteToSaveViewModel = _view.NoteToAdd;
+            var noteToSaveViewModel = _view.NoteToAdd;
             
-            ////var noteDto = noteToSaveViewModel.ToDTO(); 
+            var noteDto = noteToSaveViewModel.ToDTO(); 
             //var noteDTO = new NoteDTO();
             //noteDTO.InjectFrom(noteToSaveViewModel);
 
@@ -51,7 +99,7 @@ namespace NotesManager.Presenters
             //    }
             //};
 
-            //_notesService.Save(noteDTO);
+            _notesService.Save(noteDto);
             //RaiseNoteSaved(noteToSaveViewModel);
             TrackableTransaction();
         }
@@ -158,6 +206,11 @@ namespace NotesManager.Presenters
             noteDTO.EntityStateDTO = EntityStateDTO.Deleted;
             _notesService.Delete(noteDTO);
             RaiseNoteDeleted(noteToDeleteViewModel);
+        }
+
+        public void LoadNote(int i)
+        {
+            var note = _notesService.FindById(i);
         }
     }
 }

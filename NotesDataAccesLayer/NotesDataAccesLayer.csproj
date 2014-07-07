@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappings\FillerFormMap.cs" />
     <Compile Include="Mappings\NoteSectopmMap.cs" />
     <Compile Include="Mappings\NoteVersionMap.cs" />
     <Compile Include="PrePersistPropertyListener.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="ModelEntityStateSynchronisation.cs" />
     <Compile Include="NotesDbContext.cs" />
     <Compile Include="DateTime2Convention.cs" />
+    <Compile Include="Repositories\RepoExt.cs" />
     <Compile Include="Repositories\EfGenericRepository.cs" />
     <Compile Include="IDbContext.cs" />
     <Compile Include="Mappings\EntityMap.cs" />

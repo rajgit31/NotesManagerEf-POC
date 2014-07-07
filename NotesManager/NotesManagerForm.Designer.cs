@@ -38,6 +38,8 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.txtHiddenId = new System.Windows.Forms.TextBox();
+            this.saveFiller = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtTitle
@@ -129,11 +131,33 @@
             this.txtHiddenId.Size = new System.Drawing.Size(64, 20);
             this.txtHiddenId.TabIndex = 11;
             // 
+            // saveFiller
+            // 
+            this.saveFiller.Location = new System.Drawing.Point(531, 89);
+            this.saveFiller.Name = "saveFiller";
+            this.saveFiller.Size = new System.Drawing.Size(107, 52);
+            this.saveFiller.TabIndex = 12;
+            this.saveFiller.Text = "Save Filler";
+            this.saveFiller.UseVisualStyleBackColor = true;
+            this.saveFiller.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(531, 150);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(107, 52);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Load ";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // FrmNotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 298);
+            this.ClientSize = new System.Drawing.Size(832, 298);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.saveFiller);
             this.Controls.Add(this.txtHiddenId);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.btnEdit);
@@ -163,6 +187,8 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.TextBox txtHiddenId;
+        private System.Windows.Forms.Button saveFiller;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -15,6 +15,70 @@ namespace NotesManagerTransferEntities
 
 			
 	[Serializable]            
+	public class FillerFormDTO 
+	{	
+		public FillerFormDTO() 
+		{                    
+			  QuestionAnswerMappings = new System.Collections.Generic.List<QuestionAnswerMappingDTO>();
+							 
+		}	
+	
+		                    
+		public  System.String  Name { get; set; }
+	                    
+		public  System.Collections.Generic.List<QuestionAnswerMappingDTO>  QuestionAnswerMappings { get; set; }
+	                    
+		public  System.Int32  Id { get; set; }
+	                    
+		public  System.Boolean  IsActive { get; set; }
+	                    
+		public  System.DateTime  DateModified { get; set; }
+	                    
+		public  System.DateTime  DateCreated { get; set; }
+	                    
+		public  System.Guid  UserId { get; set; }
+	                    
+		public  EntityStateDTO  EntityStateDTO { get; set; }
+	                    
+		public  System.Boolean  MarkAsDeleted { get; set; }
+	}   
+	 		
+	[Serializable]            
+	public class QuestionAnswerMappingDTO 
+	{	
+		public QuestionAnswerMappingDTO() 
+		{                    
+		        NoteDTO = new NoteDTO();
+	                    
+		        FillerFormDTO = new FillerFormDTO();
+	 
+		}	
+	
+		                    
+		public  System.String  Client { get; set; }
+	                    
+		public  NoteDTO  NoteDTO { get; set; }
+	                    
+		public  FillerFormDTO  FillerFormDTO { get; set; }
+	                    
+		public  System.Int32  FK_FillerFormId { get; set; }
+	                    
+		public  System.Int32  Id { get; set; }
+	                    
+		public  System.Boolean  IsActive { get; set; }
+	                    
+		public  System.DateTime  DateModified { get; set; }
+	                    
+		public  System.DateTime  DateCreated { get; set; }
+	                    
+		public  System.Guid  UserId { get; set; }
+	                    
+		public  EntityStateDTO  EntityStateDTO { get; set; }
+	                    
+		public  System.Boolean  MarkAsDeleted { get; set; }
+	}   
+	 		
+	[Serializable]            
 	public class NoteSectionDTO 
 	{	
 		public NoteSectionDTO() 
