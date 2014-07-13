@@ -11,8 +11,6 @@ namespace NotesServiceLayer
         NoteDTO FindById(int id);
         NoteDTO FindByTitle(string title);
         void Save(NoteDTO noteToSave);
-        void SaveFiller(FillerFormDTO fillerFormDTO);
-        void EditFiller(FillerFormDTO fillerFormDTO);
         int Update(NoteDTO noteToUpdate);
         int Delete(NoteDTO noteDomain, bool disableSoftDelete = false);
     }

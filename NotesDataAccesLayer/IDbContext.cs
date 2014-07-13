@@ -42,6 +42,6 @@ namespace NotesDataAccesLayer
         /// Gets or sets the database.
         /// </summary>
         /// <value>The database.</value>
-        Database Database { get;  }
+        Database Database { get; set; }
     }
 }

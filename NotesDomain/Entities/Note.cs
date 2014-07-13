@@ -20,8 +20,4 @@ namespace NotesDomain.Entities
             set { _noteVersions = value; }
         }
     }
-
-    
-
-    
 }

@@ -2,9 +2,9 @@
 
 namespace NotesDataAccesLayer.Mappings
 {
-    public class NoteSectionMap : EntityMap<NoteSection>
+    public class NoteSectopmMap : EntityMap<NoteSection>
     {
-        public NoteSectionMap()
+        public NoteSectopmMap()
         {
             this.Property(x => x.SectionName);
             this.Property(x => x.SectionColor);

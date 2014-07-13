@@ -33,14 +33,6 @@ namespace NotesDataAccesLayer.Repositories
             this._dbSet = context.Set<TEntity>();
         }
 
-        internal IDbSet<TEntity> InternalSet
-        {
-            get
-            {
-                return _dbSet;
-            }    
-        }
-
         public bool WithCriteria
         {
             get

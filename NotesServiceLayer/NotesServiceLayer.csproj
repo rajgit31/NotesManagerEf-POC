@@ -48,10 +48,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NotesDataAccesLayer\NotesDataAccesLayer.csproj">
-      <Project>{C9FFBC3A-B476-48AA-98FA-F19BACBB93A8}</Project>
-      <Name>NotesDataAccesLayer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\NotesDomainInterfaces\NotesDomainInterfaces.csproj">
       <Project>{BE9B947B-C96E-4E7D-A219-28785548B5FB}</Project>
       <Name>NotesDomainInterfaces</Name>
