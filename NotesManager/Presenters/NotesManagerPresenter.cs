@@ -56,6 +56,66 @@ namespace NotesManager.Presenters
             TrackableTransaction();
         }
 
+        public void SaveFillerForm()
+        {
+            var mapDto = new QuestionAnswerMappingDTO()
+            {
+                EntityStateDTO = EntityStateDTO.Added,
+                Client = "Client",
+                NoteDTO = new NoteDTO { Id = 1, Title = "TrackableNote2" }, //existing id
+                AcpAnswerDTO = new AcpAnswerDTO()
+                {
+                    EntityStateDTO = EntityStateDTO.Added,
+                    AnswerText = "NewAnswer",
+                    AcpQuestionListItemDTO = new AcpQuestionListItemDTO()
+                    {
+                        Name = "NewAcpQuestionListItem"
+                    }
+                }
+                
+            };
+
+            var fillerForm = new FillerFormDTO()
+            {
+                EntityStateDTO = EntityStateDTO.Added,
+                QuestionAnswerMappings = new List<QuestionAnswerMappingDTO>
+                {
+                    mapDto
+                },
+                Name = "Filler",
+            };
+
+            _notesService.SaveFiller(fillerForm);
+        }
+
+        public void LoadNote(int i)
+        {
+            var note = _notesService.FindById(i);
+        }
+
+        public void EditFillerForm()
+        {
+            var mapDto = new QuestionAnswerMappingDTO()
+            {
+                Client = "ClientEdited",
+                NoteDTO = new NoteDTO { Id = 1, Title = "Bar" } //existing id
+            };
+
+            var fillerForm = new FillerFormDTO()
+            {
+                QuestionAnswerMappings = new List<QuestionAnswerMappingDTO>
+                {
+                    mapDto
+                },
+                Name = "Filler",
+
+            };
+
+            _notesService.EditFiller(fillerForm);
+
+
+        }
+
         public IList<NoteViewModel> LoadNotes()
         {
             var notes = _notesService.GetNotes();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
 using NotesDomain;
@@ -31,6 +32,14 @@ namespace NotesDataAccesLayer.Repositories
             this._filterCriteria = filterCriteria;
             this._context = context;
             this._dbSet = context.Set<TEntity>();
+        }
+
+        internal IDbSet<TEntity> InternalSet
+        {
+            get
+            {
+                return _dbSet;
+            }
         }
 
         public bool WithCriteria
@@ -110,6 +119,11 @@ namespace NotesDataAccesLayer.Repositories
             _dbSet.Add(entity);
         }
 
+        public void Attach(TEntity entity)
+        {
+            _dbSet.Attach(entity);
+        }
+
         /// <summary>
         /// Adds the specified entities.
         /// </summary>
@@ -129,6 +143,7 @@ namespace NotesDataAccesLayer.Repositories
         public void Update(TEntity entity) 
         {
             SetContext(entity);
+            
         }
 
         /// <summary>

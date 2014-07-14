@@ -35,7 +35,7 @@ namespace NotesManager
             //Also if the container get disposed before the uof, there will be an exception..
             container.RegisterType<IUnitOfWork, EfUnitOfWork>();
 
-            container.RegisterType<IDbContext, NotesDbContext>();
+            container.RegisterType<IDbContext, NotesDbContext>(new ContainerControlledLifetimeManager());
             container.RegisterType(typeof(IFilterCriteria<>), typeof(QueryFilterCriteria<>));
             container.RegisterType(typeof(IRepository<>), typeof(EfGenericRepository<>));
             

@@ -47,9 +47,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
@@ -123,6 +120,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\EF\src\EntityFramework\EntityFramework.csproj">
+      <Project>{e06d1c12-efe8-4413-a15c-ae01fc158f2f}</Project>
+      <Name>EntityFramework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NotesDataAccesLayer\NotesDataAccesLayer.csproj">
       <Project>{C9FFBC3A-B476-48AA-98FA-F19BACBB93A8}</Project>
       <Name>NotesDataAccesLayer</Name>

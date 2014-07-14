@@ -63,8 +63,9 @@ namespace NotesDataAccesLayer
 
             var repositoryType = typeof(EfGenericRepository<>);
             var filterCriteriaType = typeof(QueryFilterCriteria<>);
+            var key = repositoryType.ToString() + typeof(TEntity).ToString();
 
-            if (!_repositories.Contains(repositoryType))
+            if (!_repositories.Contains(key))
             {
                 var genericRepoType = repositoryType.MakeGenericType(typeof(TEntity));
                 var genericFilterCriteriaType = filterCriteriaType.MakeGenericType(typeof(TEntity));
@@ -72,10 +73,10 @@ namespace NotesDataAccesLayer
                 var ctroParams = new object[] { _context, genericInstance };
                 var repositoryInstance = Activator.CreateInstance(genericRepoType, ctroParams);
 
-                _repositories.Add(repositoryType, repositoryInstance);
+                _repositories.Add(key, repositoryInstance);
             }
 
-            return (IRepository<TEntity>)_repositories[repositoryType];
+            return (IRepository<TEntity>)_repositories[key];
         }
 
         /// <summary>

@@ -42,8 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
+    <Compile Include="Entities\Friend.cs" />
+    <Compile Include="Entities\FriendStudentMapping.cs" />
     <Compile Include="Entities\NoteSection.cs" />
     <Compile Include="Entities\NoteSectionType.cs" />
+    <Compile Include="Entities\QuestionAnswerMapping.cs" />
+    <Compile Include="Entities\Student.cs" />
     <Compile Include="EntityState.cs" />
     <Compile Include="ExcludeTransformationAttribute.cs" />
     <Compile Include="IEntity.cs" />

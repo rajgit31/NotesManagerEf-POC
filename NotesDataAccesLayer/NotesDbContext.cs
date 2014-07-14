@@ -19,7 +19,7 @@ namespace NotesDataAccesLayer
     {
         static NotesDbContext()
         {
-            Database.SetInitializer<NotesDbContext>(new MigrateDatabaseToLatestVersion<NotesDbContext, Configuration>());
+            //Database.SetInitializer<NotesDbContext>(new MigrateDatabaseToLatestVersion<NotesDbContext, Configuration>());
         }
 
         /// <summary>
@@ -28,6 +28,7 @@ namespace NotesDataAccesLayer
         public NotesDbContext()
             : base("name=NotesDb")
         {
+           // base.Configuration.LazyLoadingEnabled = false;
         }
 
         public IDbSet<Note> Notes { get; set; }
@@ -76,7 +77,12 @@ namespace NotesDataAccesLayer
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Configurations.Add(new NoteMap());
             modelBuilder.Configurations.Add(new NoteVersionMap());
-            
+
+            modelBuilder.Configurations.Add(new FillerFormMap());
+            modelBuilder.Configurations.Add(new QuestionAnswerMap());
+            modelBuilder.Configurations.Add(new AcpAnswerMap());
+            modelBuilder.Configurations.Add(new AcpQuestionListItemMap());
+
             modelBuilder.Conventions.Add(new DateTime2Convention());
             base.OnModelCreating(modelBuilder);
         }
@@ -87,7 +93,7 @@ namespace NotesDataAccesLayer
         /// This is accessed by the implementation of <see cref="IUnitOfWork" /> for Transactional purposes. 
         /// </summary>
         /// <value>The database.</value>
-        public new Database Database { get; set; }
+        public  Database Database { get { return base.Database; } }
 
         private Boolean HasUnsavedChanges()
         {

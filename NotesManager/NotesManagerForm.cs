@@ -140,5 +140,17 @@ namespace NotesManager
         {
             _presenter.Delete();
         }
+
+        private void btnSaveFillerForm_Click(object sender, EventArgs e)
+        {
+            _presenter.SaveFillerForm();
+        }
+
+        private void btnEditFillerform_Click(object sender, EventArgs e)
+        {
+            _presenter.EditFillerForm();
+        }
+
+
     }
 }

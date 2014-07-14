@@ -13,5 +13,7 @@ namespace NotesServiceLayer
         void Save(NoteDTO noteToSave);
         int Update(NoteDTO noteToUpdate);
         int Delete(NoteDTO noteDomain, bool disableSoftDelete = false);
+        void SaveFiller(FillerFormDTO fillerFormDTO);
+        void EditFiller(FillerFormDTO fillerFormDTO);
     }
 }
