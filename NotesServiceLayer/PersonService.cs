@@ -52,7 +52,7 @@ namespace NotesServiceLayer
             //existingPerson.Passport = passportEx;
             //_personRepo.Update(existingPerson);
 
-            //3. Just attache the new entities with existing ids
+            //3. Just attache the new entities with existing ids not working..
             var person = new Person();
             person.Id = 7;
             person.Name = "Bush";
