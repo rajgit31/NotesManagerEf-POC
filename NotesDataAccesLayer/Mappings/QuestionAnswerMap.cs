@@ -15,7 +15,7 @@ namespace NotesDataAccesLayer.Mappings
         public AcpAnswerMap()
         {
             this.Property(x => x.AnswerText);
-            this.HasOptional(x => x.AcpQuestionListItem);
+            this.HasRequired(x => x.AcpQuestionListItem);
         }
     }
 

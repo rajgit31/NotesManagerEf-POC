@@ -34,10 +34,18 @@ namespace NotesManager
             //Don't need  to have the ContainerControlledLifetimeManager. The factory create repos.
             //Also if the container get disposed before the uof, there will be an exception..
             container.RegisterType<IUnitOfWork, EfUnitOfWork>();
+            container.RegisterType<IUnitOfWorkSimple, EfUnitOfWorkSimple>();
 
             container.RegisterType<IDbContext, NotesDbContext>(new ContainerControlledLifetimeManager());
             container.RegisterType(typeof(IFilterCriteria<>), typeof(QueryFilterCriteria<>));
             container.RegisterType(typeof(IRepository<>), typeof(EfGenericRepository<>));
+
+            container.RegisterType(typeof(IPersonService), typeof(PersonService));
+
+            container.RegisterType(typeof(IRepositorySimple<>), typeof(EfGenericRepositorySimple<>));
+            container.RegisterType<IDbContextSimple, PersonDbContext>(new ContainerControlledLifetimeManager());
+            
+
             
             return container;
         }

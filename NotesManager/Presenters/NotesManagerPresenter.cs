@@ -13,12 +13,14 @@ namespace NotesManager.Presenters
     {
         private readonly INotesManagerView _view = null;
         private readonly INotesManagerService _notesService;
+        private IPersonService _personService;
         public event EventHandler<NoteSavedEventArgs> NoteSaved;
         public event EventHandler<NoteEditedEventArgs> NoteEdited;
         public event EventHandler<NoteEditedEventArgs> NoteDeleted;
 
-        public NotesManagerPresenter(INotesManagerView view, INotesManagerService notesService)
+        public NotesManagerPresenter(INotesManagerView view, INotesManagerService notesService, IPersonService personService)
         {
+            _personService = personService;
             _notesService = notesService;
             _view = view;
         }
@@ -218,6 +220,37 @@ namespace NotesManager.Presenters
             noteDTO.EntityStateDTO = EntityStateDTO.Deleted;
             _notesService.Delete(noteDTO);
             RaiseNoteDeleted(noteToDeleteViewModel);
+        }
+
+        public void SavePerson()
+        {
+            var personDTO = new PersonDTO();
+            personDTO.Name = "Alex";
+            personDTO.PassportDTO = new PassportDTO()
+            {
+                Nationality = "Brazilian",
+                Number = "XER123"
+            };
+
+
+            _personService.Save(personDTO);
+
+            
+        }
+
+
+        public void UpdatePerson()
+        {
+            //update the current person to use the passport 3
+            var personDTO = new PersonDTO();
+            personDTO.Name = "Nick";
+            personDTO.PassportDTO = new PassportDTO()
+            {
+                Nationality = "African",
+                Number = "CTSTSR"
+            };
+
+            _personService.Update(personDTO);
         }
     }
 }

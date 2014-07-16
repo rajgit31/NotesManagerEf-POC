@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections;
-using NotesDomain;
 
 namespace NotesDomainInterfaces
 {
     /// <summary>
     /// Interface IUnitOfWork
     /// </summary>
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWorkSimple : IDisposable
     {
         /// <summary>
         /// Saves this instance.
@@ -19,7 +17,7 @@ namespace NotesDomainInterfaces
         /// </summary>
         /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <returns>IRepository&lt;TEntity&gt;.</returns>
-        IRepository<TEntity> Repository<TEntity>() where TEntity : BaseEntity;
+        IRepositorySimple<TEntity> Repository<TEntity>() where TEntity : class ;
         /// <summary>
         /// Begins the transaction.
         /// </summary>

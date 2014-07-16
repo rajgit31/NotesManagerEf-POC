@@ -40,6 +40,7 @@
             this.txtHiddenId = new System.Windows.Forms.TextBox();
             this.btnSaveFillerForm = new System.Windows.Forms.Button();
             this.btnEditFillerform = new System.Windows.Forms.Button();
+            this.btnPerson = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtTitle
@@ -151,11 +152,22 @@
             this.btnEditFillerform.UseVisualStyleBackColor = true;
             this.btnEditFillerform.Click += new System.EventHandler(this.btnEditFillerform_Click);
             // 
+            // btnPerson
+            // 
+            this.btnPerson.Location = new System.Drawing.Point(536, 208);
+            this.btnPerson.Name = "btnPerson";
+            this.btnPerson.Size = new System.Drawing.Size(107, 58);
+            this.btnPerson.TabIndex = 14;
+            this.btnPerson.Text = "Person";
+            this.btnPerson.UseVisualStyleBackColor = true;
+            this.btnPerson.Click += new System.EventHandler(this.btnPerson_Click);
+            // 
             // FrmNotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(741, 298);
+            this.Controls.Add(this.btnPerson);
             this.Controls.Add(this.btnEditFillerform);
             this.Controls.Add(this.btnSaveFillerForm);
             this.Controls.Add(this.txtHiddenId);
@@ -189,6 +201,7 @@
         private System.Windows.Forms.TextBox txtHiddenId;
         private System.Windows.Forms.Button btnSaveFillerForm;
         private System.Windows.Forms.Button btnEditFillerform;
+        private System.Windows.Forms.Button btnPerson;
     }
 }
 

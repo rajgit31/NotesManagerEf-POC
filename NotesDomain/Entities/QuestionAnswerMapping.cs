@@ -1,4 +1,6 @@
-﻿namespace NotesDomain.Entities
+﻿using System.Data;
+
+namespace NotesDomain.Entities
 {
     public class QuestionAnswerMapping : BaseEntity
     {

@@ -9,11 +9,13 @@ namespace NotesManager
     public partial class FrmNotes : Form, INotesManagerView
     {
         private readonly NotesManagerPresenter _presenter;
+        private IPersonService _service;
 
-        public FrmNotes(INotesManagerService notesService)
+        public FrmNotes(INotesManagerService notesService, IPersonService service)
         {
+            _service = service;
             InitializeComponent();
-            _presenter = new NotesManagerPresenter(this, notesService);
+            _presenter = new NotesManagerPresenter(this, notesService, _service);
             LoadAllNotes();
             RegisterViewEvents();
         }
@@ -149,6 +151,12 @@ namespace NotesManager
         private void btnEditFillerform_Click(object sender, EventArgs e)
         {
             _presenter.EditFillerForm();
+        }
+
+        private void btnPerson_Click(object sender, EventArgs e)
+        {
+            //_presenter.SavePerson();
+            _presenter.UpdatePerson();
         }
 
 

@@ -46,6 +46,7 @@
     <Compile Include="Entities\FriendStudentMapping.cs" />
     <Compile Include="Entities\NoteSection.cs" />
     <Compile Include="Entities\NoteSectionType.cs" />
+    <Compile Include="Entities\Person.cs" />
     <Compile Include="Entities\QuestionAnswerMapping.cs" />
     <Compile Include="Entities\Student.cs" />
     <Compile Include="EntityState.cs" />

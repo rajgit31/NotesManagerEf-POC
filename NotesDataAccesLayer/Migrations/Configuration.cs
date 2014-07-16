@@ -5,14 +5,14 @@ namespace NotesDataAccesLayer.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<NotesDataAccesLayer.NotesDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<NotesDataAccesLayer.PersonDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(NotesDataAccesLayer.NotesDbContext context)
+        protected override void Seed(NotesDataAccesLayer.PersonDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
